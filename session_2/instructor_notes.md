@@ -68,10 +68,57 @@ ru_utime     0.777
 ru_stime     0.248        
 ru_maxrss    74624 
 ```
-			
+
+
+## Large memory jobs
+
+For the SCC, we consider a job that is using more than 4 GB of memory as a large memory job. Refer to our Large Memory Job table to select appropriate resources:
+
+[Large Memory Resource Selection Table](https://www.bu.edu/tech/support/research/system-usage/running-jobs/batch-script-examples/#MEMORY)
+
+To determine how much memory is required by the job, we can use the `top` command method.
+
+For interactive jobs, open a terminal and run the following command:
+
+```console
+top -u <username>
+```
+
+To monitor a batch job, first use `qstat` to determine what node (hostname) is running the job.
+
+```console
+qstat -u <username>
+```
+
+Then run the following command to ssh and run top on that login node.
+
+```console
+ssh -t <hostname> 'top -u <username>'
+```
+
+We can also use the `qacct -j <job_number>` command to get memory usage information.  This method doesn't always work for multi-core jobs.
+
+Look for the `ru_maxrss` value.
+
+```console
+qsub_time    Tue Jan 28 10:15:16 2025
+start_time   Tue Jan 28 10:18:45 2025
+end_time     Tue Jan 28 10:27:26 2025
+granted_pe   NONE                
+slots        1                   
+failed       0    
+exit_status  0                   
+ru_wallclock 521          
+ru_utime     515.572      
+ru_stime     1.584        
+ru_maxrss    6332824   <-- LOOK AT RU_MAXRSS (kilobytes)
+```
+
 		
 ##  Selecting appropriate number of cores
 ### Process reaper
+
+```console
 The following batch job, running on SCC-PF6, has been terminated because it was using 10.4 processors but was allocated only 8. Please resubmit the job using an appropriate PE specification.
 See https://www.bu.edu/tech/support/research/system-usage/running-jobs for more information.
 
@@ -104,6 +151,7 @@ Please email help@scc.bu.edu for assistance.
 Some programs will use all cores available by default.  If the programmer was nice they will provide you 
 with an option/argument to limit how many cores will be used. 
 
+### Job Environment Variables
 We can take advantage of job environment variables to set the number of cores a program can use. 
 A list of environment variables crated for each job are listed here:
 https://www.bu.edu/tech/support/research/system-usage/running-jobs/submitting-jobs/#ENV
@@ -167,26 +215,11 @@ ncores = str2num(getenv('NSLOTS'));
 
 We can use `top` command to monitor the processes. 
 
-For interactive jobs, open a terminal and run the following command:
-
-```console
-top -u <username>
-```
-
-To monitor a batch, first use `qstat` to determine what node (hostname) is running the job.
-
-```console
-qstat -u <username>
-```
-
-Then run the following command to ssh and run top on that login node.
-
-```console
-ssh -t <hostname> 'top -u <username>'
-```
 
 
-## Large memory jobs
+
+
+
 		
 ## Array jobs
 

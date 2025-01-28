@@ -1,0 +1,7 @@
+JOB_ID: 2346917
+JOB_NAME: env_variables_R.qsub
+NSLOTS: 1
+HOSTNAME: scc-tb1
+SGE_TASK_ID: undefined
+TMPDIR: /scratch/2346917.1.geo
+[1] "Hello World!"

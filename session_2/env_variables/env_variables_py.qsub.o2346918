@@ -1,0 +1,16 @@
+ENVIRONMENT VARIABLES IN BASH SCRIPT
+JOB_ID: 2346918
+JOB_NAME: env_variables_py.qsub
+NSLOTS: 1
+HOSTNAME: scc-ta4
+SGE_TASK_ID: undefined
+TMPDIR: /scratch/2346918.1.geo
+
+
+Environment variables inside python script:
+JOB_ID: 2346918
+JOB_NAME: env_variables_py.qsub
+NSLOTS: 1
+HOSTNAME: scc-ta4
+SGE_TASK_ID: undefined
+TMPDIR: /scratch/2346918.1.geo
