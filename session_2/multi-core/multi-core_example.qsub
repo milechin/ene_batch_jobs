@@ -1,0 +1,10 @@
+#!/usr/bin/bash -l
+
+#$ -P dvm-rcs
+#$ -l h_rt=00:30:00
+#$ -pe omp 8
+#$ -l buyin=FALSE
+#$ -j y
+
+module load R
+Rscript multi-core_example.R

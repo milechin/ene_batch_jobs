@@ -1,0 +1,14 @@
+#!/usr/bin/bash -l
+
+#$ -P dvm-rcs
+#$ -j y
+
+echo JOB_ID: $JOB_ID
+echo JOB_NAME: $JOB_NAME
+echo NSLOTS: $NSLOTS
+echo HOSTNAME: $HOSTNAME
+echo SGE_TASK_ID: $SGE_TASK_ID
+echo TMPDIR: $TMPDIR
+
+module load R 
+Rscript my_script.R

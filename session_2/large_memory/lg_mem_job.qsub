@@ -1,0 +1,11 @@
+#!/usr/bin/bash -l
+
+#$ -P dvm-rcs
+#$ -j y
+
+
+module load python3
+python lg_mem.py
+
+
+
