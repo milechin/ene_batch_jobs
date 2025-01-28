@@ -215,12 +215,20 @@ ncores = str2num(getenv('NSLOTS'));
 
 We can use `top` command to monitor the processes. 
 
-
-
-
-
-
 		
-## Array jobs
+## Array Jobs
+When submitting an array job, each job will be assigned an task id that is accessible by `$SGE_TASK_ID` environment variable.  Use the task id to map out the parameters or files you want to use as inputs for the script.
 
-## Select architecture
+Below is an example qsub script that creates 5 tasks and prints the `$SGE_TASK_ID` value to the standard output.
+
+```bash
+#!/bin/bash -l
+
+#$ -P dvm-rcs
+#$ -j y
+
+# Submit an array job with 5 tasks 
+#$ -t 1-5
+
+echo This job has TASK ID value of: $SGE_TASK_ID
+```

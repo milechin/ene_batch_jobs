@@ -1,0 +1,9 @@
+#!/bin/bash -l
+
+#$ -P dvm-rcs
+#$ -j y
+
+# Submit an array job with 5 tasks 
+#$ -t 1-5
+
+echo This job has TASK ID value of: $SGE_TASK_ID
