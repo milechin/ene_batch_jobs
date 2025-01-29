@@ -40,7 +40,8 @@ To select job length we use the following directive: `-l h_rt=hh:mm:ss`
 *GEO queue limit - 5 Days
 
 
-### How long did a previous job run for?
+**How long did a previous job run for?**
+
 We can use the `qacct` command to accomplish this.
 
 ```bash
@@ -116,6 +117,18 @@ ru_maxrss    6332824   <-- LOOK AT RU_MAXRSS (kilobytes)
 
 		
 ##  Selecting appropriate number of cores
+
+We use `-pe omp N` to request a specific `N` number of cores for the job.  
+Below are the recommended choices for `N`:
+
+- 1-4
+- 8
+- 16
+- 28
+- 32
+- 36
+
+
 ### Process reaper
 
 ```console
@@ -153,7 +166,7 @@ with an option/argument to limit how many cores will be used.
 
 ### Job Environment Variables
 We can take advantage of job environment variables to set the number of cores a program can use. 
-A list of environment variables crated for each job are listed here:
+A list of environment variables created for each job are listed here:
 https://www.bu.edu/tech/support/research/system-usage/running-jobs/submitting-jobs/#ENV
 
 We can print the values of the environment values inside our bash script using the `echo` command:
