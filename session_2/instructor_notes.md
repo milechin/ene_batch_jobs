@@ -5,7 +5,7 @@
 	```bash
 	cat -e <filename>
 	```
-1. The `^M`, or return characters, from Windows machine are the problemn.
+1. The `^M$`, or return characters, from Windows machine are the problem.
 1. To correct this we can use the `dos2unix` command
 	```bash
 	dos2unix <filename>
