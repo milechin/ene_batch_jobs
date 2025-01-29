@@ -232,3 +232,14 @@ Below is an example qsub script that creates 5 tasks and prints the `$SGE_TASK_I
 
 echo This job has TASK ID value of: $SGE_TASK_ID
 ```
+
+## Download Jobs
+On the SCC we have a dedicated node for downloading data.  
+It has its own dedicated internet connection. To use it, one needs to add `-l download` qsub option.
+
+More info: https://www.bu.edu/tech/support/research/system-usage/transferring-files/cloud-applications/#DTN
+
+Notes:
+- Increasing the number of cores will not make the downloads run faster.
+- The download limitation will be with the remote server and the restrictions they put in place to make the system stable and accessible by everyone.
+
