@@ -1,0 +1,7 @@
+#!/bin/bash -l
+
+#$ -P dvm-rcs
+#$ -l buyin=TRUE
+
+module load R
+Rscript my_script.R

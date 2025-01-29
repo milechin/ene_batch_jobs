@@ -11,7 +11,7 @@
 	dos2unix <filename>
 	```
 		
-## Run job on buy-in queue only
+## 01 Run job on buy-in queue only
 1. To run only on GEO buy-in nodes add `-l buyin=TRUE` directive to the qsub options.
 
 ```bash
@@ -25,7 +25,7 @@ Rscript my_script.R
 
 ```
 
-## Selecting Job length
+## 02 Selecting Job length
 
 To select job length we use the following directive: `-l h_rt=hh:mm:ss`
 
@@ -71,7 +71,7 @@ ru_maxrss    74624
 ```
 
 
-## Large memory jobs
+## 03 Large memory jobs
 
 For the SCC, we consider a job that is using more than 4 GB of memory as a large memory job. Refer to our Large Memory Job table to select appropriate resources:
 
@@ -116,7 +116,7 @@ ru_maxrss    6332824   <-- LOOK AT RU_MAXRSS (kilobytes)
 ```
 
 		
-##  Selecting appropriate number of cores
+##  04a/b Selecting appropriate number of cores
 
 We use `-pe omp N` to request a specific `N` number of cores for the job.  
 Below are the recommended choices for `N`:
@@ -229,7 +229,7 @@ ncores = str2num(getenv('NSLOTS'));
 We can use `top` command to monitor the processes. 
 
 		
-## Array Jobs
+## 05 Array Jobs
 When submitting an array job, each job will be assigned an task id that is accessible by `$SGE_TASK_ID` environment variable.  Use the task id to map out the parameters or files you want to use as inputs for the script.
 
 Below is an example qsub script that creates 5 tasks and prints the `$SGE_TASK_ID` value to the standard output.
